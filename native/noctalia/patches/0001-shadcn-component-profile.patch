@@ -1,0 +1,389 @@
+diff --git a/src/shell/dock/dock_items.cpp b/src/shell/dock/dock_items.cpp
+index e2a734629..ffa544ccb 100644
+--- a/src/shell/dock/dock_items.cpp
++++ b/src/shell/dock/dock_items.cpp
+@@ -31,15 +31,15 @@
+ namespace {
+ 
+   // Instance-count badge geometry — scales with icon size.
+-  constexpr float kBadgeSizeRatio = 0.30F; // fraction of icon size
+-  constexpr float kBadgeMinSize = 16.0F;   // minimum diameter in px
++  constexpr float kBadgeSizeRatio = 0.28F; // fraction of icon size
++  constexpr float kBadgeMinSize = 14.0F;   // minimum diameter in px
+   constexpr float kBadgeFontRatio = 0.72F; // font size relative to badge diameter
+   constexpr float kBadgeCornerInsetX = 0.55F;
+   constexpr float kBadgeCornerInsetY = 0.45F;
+-  constexpr float kDotSizeRatio = 0.09F;
+-  constexpr float kDotMinSize = 4.0F;
+-  constexpr float kDotGap = 3.0F;
+-  constexpr float kCellPad = 6.0F;
++  constexpr float kDotSizeRatio = 0.07F;
++  constexpr float kDotMinSize = 3.0F;
++  constexpr float kDotGap = 2.0F;
++  constexpr float kCellPad = Style::spaceSm;
+   constexpr float kLauncherGlyphSizeRatio = 0.8F;
+   constexpr float kHoverZoomLerp = 0.28F;
+   constexpr float kHoverZoomReferenceFrameMs = 1000.0F / 60.0F;
+diff --git a/src/shell/lockscreen/lockscreen_login_box.h b/src/shell/lockscreen/lockscreen_login_box.h
+index 4281d2719..deacb173f 100644
+--- a/src/shell/lockscreen/lockscreen_login_box.h
++++ b/src/shell/lockscreen/lockscreen_login_box.h
+@@ -2,6 +2,7 @@
+ 
+ #include "config/config_types.h"
+ #include "ui/palette.h"
++#include "ui/style.h"
+ 
+ #include <cstdint>
+ #include <string>
+@@ -43,9 +44,9 @@ namespace lockscreen_login_box {
+     LayoutMode layout = LayoutMode::Regular;
+     ColorSpec panelFill = colorSpecFromRole(ColorRole::SurfaceVariant, 0.88F);
+     float panelOpacity = 0.88F;
+-    float panelRadius = 12.0F;
++    float panelRadius = Style::cardRadius;
+     float inputOpacity = 1.0F;
+-    float inputRadius = 6.0F;
++    float inputRadius = Style::controlRadius;
+     bool centerPasswordText = false;
+     bool showLoginButton = true;
+     bool showCapsLock = true;
+diff --git a/src/shell/notification/notification_toast.cpp b/src/shell/notification/notification_toast.cpp
+index b5a3cec29..83105f112 100644
+--- a/src/shell/notification/notification_toast.cpp
++++ b/src/shell/notification/notification_toast.cpp
+@@ -37,9 +37,9 @@ namespace {
+   constexpr Logger kLog("notification");
+ 
+   constexpr int kCardWidth = 360;
+-  constexpr float kInlineReplyInputHeight = Style::controlHeightSm;
++  constexpr float kInlineReplyInputHeight = Style::controlHeight;
+   constexpr float kInlineReplyGap = Style::spaceSm;
+-  constexpr float kInlineReplySendButtonSize = Style::controlHeightSm;
++  constexpr float kInlineReplySendButtonSize = Style::iconButtonSize;
+ 
+   constexpr float kGap = Style::spaceSm;
+   constexpr float kPaddingX = Style::spaceMd;
+@@ -47,11 +47,11 @@ namespace {
+   constexpr float kPaddingBottom = Style::spaceMd;
+   constexpr int kFallbackVisibleCards = 5;
+   constexpr float kQueuedY = -1.0F;
+-  constexpr float kCardInnerPad = Style::spaceMd;
+-  constexpr float kCloseButtonSize = 20.0F;
+-  constexpr float kCloseGlyphSize = 12.0F;
+-  constexpr float kNotificationIconSize = 45.0F;
+-  constexpr float kNotificationIconSizeCompact = 38.0F;
++  constexpr float kCardInnerPad = Style::componentPadding;
++  constexpr float kCloseButtonSize = Style::controlHeightSm;
++  constexpr float kCloseGlyphSize = Style::baseGlyphSize;
++  constexpr float kNotificationIconSize = Style::iconButtonSize;
++  constexpr float kNotificationIconSizeCompact = Style::controlHeightSm;
+   constexpr float kNotificationIconGlyphSize = 24.0F;
+   constexpr float kNotificationIconGlyphSizeCompact = 20.0F;
+   constexpr float kNotificationIconReferenceSize = 36.0F;
+@@ -2662,7 +2662,7 @@ InputArea* NotificationToast::buildCard(
+           .height = cardHeight,
+           .configure = [scale, bgAlpha, borderWidth, urgency = entry.urgency](Box& box) {
+             box.setCardStyle();
+-            box.setRadius(Style::scaledRadiusXl(scale));
++            box.setRadius(Style::scaledRadius(Style::floatingSurfaceRadius, scale));
+             box.setFill(colorSpecFromRole(ColorRole::Surface, bgAlpha));
+             box.setBorder(
+                 colorSpecFromRole(urgency == Urgency::Critical ? ColorRole::Error : ColorRole::Outline), borderWidth
+diff --git a/src/shell/osd/osd_overlay.cpp b/src/shell/osd/osd_overlay.cpp
+index 9a4083c75..8436d1b06 100644
+--- a/src/shell/osd/osd_overlay.cpp
++++ b/src/shell/osd/osd_overlay.cpp
+@@ -145,13 +145,13 @@ namespace {
+ 
+   [[nodiscard]] float verticalProgressWidth(float s) { return progressHeight(s) * 1.75F; }
+ 
+-  [[nodiscard]] float cardPadding(float s) { return Style::spaceMd * s; }
++  [[nodiscard]] float cardPadding(float s) { return Style::componentPadding * s; }
+ 
+-  [[nodiscard]] float innerGap(float s) { return (Style::spaceSm + Style::spaceXs * 0.5F) * s; }
++  [[nodiscard]] float innerGap(float s) { return Style::componentGap * s; }
+ 
+   [[nodiscard]] float osdCardRadius(float cw, float ch, float layoutScale) {
+     const float maxR = std::min(cw, ch) * 0.5F;
+-    return std::min(maxR, Style::scaledRadiusXl(layoutScale));
++    return std::min(maxR, Style::scaledRadius(Style::floatingSurfaceRadius, layoutScale));
+   }
+ 
+   [[nodiscard]] float osdProgressRadius(float layoutScale) {
+diff --git a/src/shell/panel/panel_manager.cpp b/src/shell/panel/panel_manager.cpp
+index d48ddc0da..15b0b401f 100644
+--- a/src/shell/panel/panel_manager.cpp
++++ b/src/shell/panel/panel_manager.cpp
+@@ -941,7 +941,7 @@ void PanelManager::openPanel(const std::string& panelId, PanelOpenRequest reques
+     const bool barIsVertical = barIsLeft || barIsRight;
+ 
+     const float scale = m_activePanel->contentScale();
+-    const float cornerRadius = Style::scaledRadiusXl(scale);
++    const float cornerRadius = Style::scaledRadius(Style::floatingSurfaceRadius, scale);
+     const auto& shadowConfig = m_config->config().shell.shadow;
+     const auto shadowBleed = shell::surface_shadow::bleed(m_activePanel->hasDecoration(), shadowConfig);
+     const auto cornerOutset = static_cast<std::int32_t>(std::ceil(cornerRadius));
+@@ -2221,7 +2221,7 @@ void PanelManager::applyPanelCompositorBlur(
+     return;
+   }
+ 
+-  const float radius = Style::scaledRadiusXl(m_activePanel->contentScale());
++  const float radius = Style::scaledRadius(Style::floatingSurfaceRadius, m_activePanel->contentScale());
+   const CornerShapes corners = m_attachedToBar ? attached_panel::cornerShapes(m_attachedBarPosition) : CornerShapes{};
+   const RectInsets logicalInset =
+       m_attachedToBar ? attached_panel::logicalInset(m_attachedBarPosition, radius) : RectInsets{};
+@@ -2274,7 +2274,7 @@ void PanelManager::applyAttachedDecorationStyle() {
+     return;
+   }
+   const float scale = m_activePanel->contentScale();
+-  const float radius = Style::scaledRadiusXl(scale);
++  const float radius = Style::scaledRadius(Style::floatingSurfaceRadius, scale);
+ 
+   if (m_bgNode != nullptr) {
+     auto* bg = static_cast<Box*>(m_bgNode);
+@@ -2365,7 +2365,8 @@ void PanelManager::onConfigReloaded() {
+         m_config->config().shell.panel.shadow && shell::surface_shadow::enabled(true, shadowConfig);
+     m_panelShadowNode->setVisible(panelShadow);
+     if (!m_attachedToBar && panelShadow) {
+-      const float shadowRadius = Style::scaledRadiusXl(m_activePanel->contentScale());
++      const float shadowRadius =
++          Style::scaledRadius(Style::floatingSurfaceRadius, m_activePanel->contentScale());
+       m_panelShadowNode->setStyle(
+           shell::surface_shadow::style(
+               shadowConfig, panelBackgroundOpacity,
+@@ -2462,7 +2463,7 @@ void PanelManager::buildScene(std::uint32_t width, std::uint32_t height) {
+       const bool panelBorders = m_config != nullptr && m_config->config().shell.panel.borders;
+       bg->setPanelStyle(panelBorders);
+       if (m_attachedToBar) {
+-        const float radius = Style::scaledRadiusXl(m_activePanel->contentScale());
++        const float radius = Style::scaledRadius(Style::floatingSurfaceRadius, m_activePanel->contentScale());
+         bg->clearBorder();
+         bg->setCornerShapes(attached_panel::cornerShapes(m_attachedBarPosition));
+         bg->setLogicalInset(attached_panel::logicalInset(m_attachedBarPosition, radius));
+@@ -2574,7 +2575,9 @@ void PanelManager::buildScene(std::uint32_t width, std::uint32_t height) {
+   const auto panelY = static_cast<float>(m_panelInsetY);
+   const float panelW = m_panelVisualWidth > 0 ? static_cast<float>(m_panelVisualWidth) : w;
+   const float panelH = m_panelVisualHeight > 0 ? static_cast<float>(m_panelVisualHeight) : h;
+-  const float attachedRadius = m_attachedToBar ? Style::scaledRadiusXl(m_activePanel->contentScale()) : 0.0F;
++  const float attachedRadius = m_attachedToBar
++                                   ? Style::scaledRadius(Style::floatingSurfaceRadius, m_activePanel->contentScale())
++                                   : 0.0F;
+   const bool barIsVertical = m_attachedToBar && (m_attachedBarPosition == "left" || m_attachedBarPosition == "right");
+   // The bg extends past the body along the bar cross axis for concave-corner notches.
+   const float bgX = barIsVertical ? panelX : panelX - attachedRadius;
+@@ -2593,7 +2596,8 @@ void PanelManager::buildScene(std::uint32_t width, std::uint32_t height) {
+     m_panelShadowNode->setPosition(bgX + shadowOffsetX, bgY + shadowOffsetY);
+     m_panelShadowNode->setSize(bgW, bgH);
+     if (!m_attachedToBar && panelShadow) {
+-      const float shadowRadius = Style::scaledRadiusXl(m_activePanel->contentScale());
++      const float shadowRadius =
++          Style::scaledRadius(Style::floatingSurfaceRadius, m_activePanel->contentScale());
+       const float panelBackgroundOpacity = shell::panel_surface::backgroundOpacity(m_config);
+       m_panelShadowNode->setStyle(
+           shell::surface_shadow::style(
+diff --git a/src/shell/session/session_panel.cpp b/src/shell/session/session_panel.cpp
+index 448e0a9a7..3465c69bb 100644
+--- a/src/shell/session/session_panel.cpp
++++ b/src/shell/session/session_panel.cpp
+@@ -197,7 +197,7 @@ Button* SessionPanel::createActionButton(const SessionPanelActionConfig& cfg, st
+       .paddingV = Style::spaceMd * scale,
+       .paddingH = Style::spaceMd * scale,
+       .gap = Style::spaceSm * scale,
+-      .radius = Style::scaledRadiusLg(scale),
++      .radius = Style::scaledRadius(Style::cardRadius, scale),
+       .flexGrow = 1.0F,
+       .onClick = [this, index]() { armEntry(index); },
+       .configure =
+@@ -226,7 +226,7 @@ void SessionPanel::attachCountdownOverlay(Button& button, ActionCountdownOverlay
+ 
+   auto scrim = ui::box({
+       .out = &overlay.scrim,
+-      .radius = Style::scaledRadiusLg(scale),
++      .radius = Style::scaledRadius(Style::cardRadius, scale),
+       .participatesInLayout = false,
+       .configure = [](Box& box) { box.setZIndex(0); },
+   });
+diff --git a/src/shell/session/session_panel.h b/src/shell/session/session_panel.h
+index 53a62dab6..32cfefd30 100644
+--- a/src/shell/session/session_panel.h
++++ b/src/shell/session/session_panel.h
+@@ -49,8 +49,8 @@ private:
+     double totalMs = 0.0;
+   };
+ 
+-  static constexpr float kActionButtonMinHeight = 112.0F;
+-  static constexpr float kButtonMinWidth = 152.0F;
++  static constexpr float kActionButtonMinHeight = 96.0F;
++  static constexpr float kButtonMinWidth = 136.0F;
+   static constexpr std::size_t kMaxColumns = 5;
+ 
+   void doLayout(Renderer& renderer, float width, float height) override;
+diff --git a/src/ui/controls/button.cpp b/src/ui/controls/button.cpp
+index 37de7180b..a713f9246 100644
+--- a/src/ui/controls/button.cpp
++++ b/src/ui/controls/button.cpp
+@@ -182,9 +182,9 @@ Button::ButtonPalette Button::defaultPalette(ButtonVariant variant) { return pal
+ 
+ Button::Button() {
+   setAlign(FlexAlign::Center);
+-  setMinHeight(Style::controlHeightSm);
+-  setPadding(Style::spaceSm);
+-  setRadius(Style::scaledRadiusMd());
++  setMinHeight(Style::buttonHeight);
++  setPadding(Style::componentGap);
++  setRadius(Style::scaledRadius(Style::controlRadius));
+ 
+   auto area = std::make_unique<InputArea>();
+   area->setOnEnter([this](const InputArea::PointerData& /*data*/) {
+diff --git a/src/ui/controls/calendar_view.cpp b/src/ui/controls/calendar_view.cpp
+index a1e64f84d..beb818034 100644
+--- a/src/ui/controls/calendar_view.cpp
++++ b/src/ui/controls/calendar_view.cpp
+@@ -272,7 +272,7 @@ namespace calendar_view {
+           .minWidth = layout.dayButtonSize,
+           .minHeight = layout.dayButtonSize,
+           .padding = 0.0F,
+-          .radius = Style::scaledRadiusMd(options.scale),
++          .radius = Style::scaledRadius(Style::controlRadius, options.scale),
+           .width = layout.dayButtonSize,
+           .height = layout.dayButtonSize,
+       });
+@@ -289,6 +289,10 @@ namespace calendar_view {
+       } else {
+         if (state.isCurrentMonth && date.day == state.current.day) {
+           Button::ButtonPalette today = Button::defaultPalette(ButtonVariant::Ghost);
++          today.borderWidth = Style::borderWidth * options.scale;
++          today.normal.border = colorSpecFromRole(ColorRole::Primary);
++          today.hover.border = colorSpecFromRole(ColorRole::Primary);
++          today.pressed.border = colorSpecFromRole(ColorRole::Primary);
+           today.normal.label = colorSpecFromRole(ColorRole::Primary);
+           button->setCustomPalette(today);
+         }
+diff --git a/src/ui/controls/input.h b/src/ui/controls/input.h
+index 8462b7657..b75a37427 100644
+--- a/src/ui/controls/input.h
++++ b/src/ui/controls/input.h
+@@ -237,7 +237,7 @@ private:
+   bool m_frameVisible = true;
+   bool m_embeddedOnSolidPrimary = false;
+   float m_surfaceOpacity = 1.0F;
+-  float m_frameRadius = Style::radiusMd;
++  float m_frameRadius = Style::controlRadius;
+   bool m_enabled = true;
+   TextInputService* m_textInputService = nullptr;
+   float m_minLayoutWidth = 0.0F;
+diff --git a/src/ui/style.h b/src/ui/style.h
+index c9844094d..142c34b25 100644
+--- a/src/ui/style.h
++++ b/src/ui/style.h
+@@ -4,16 +4,16 @@
+ 
+ namespace Style {
+ 
+-  inline constexpr int barThicknessDefault = 34;
++  inline constexpr int barThicknessDefault = 36;
+ 
+-  inline constexpr int animFast = 100;
+-  inline constexpr int animNormal = 200;
+-  inline constexpr int animSlow = 400;
++  inline constexpr int animFast = 120;
++  inline constexpr int animNormal = 180;
++  inline constexpr int animSlow = 280;
+ 
+-  inline constexpr float radiusSm = 3.0F;
+-  inline constexpr float radiusMd = 6.0F;
+-  inline constexpr float radiusLg = 9.0F;
+-  inline constexpr float radiusXl = 12.0F;
++  inline constexpr float radiusSm = 4.0F;
++  inline constexpr float radiusMd = 8.0F;
++  inline constexpr float radiusLg = 12.0F;
++  inline constexpr float radiusXl = 16.0F;
+ 
+   inline constexpr float borderWidth = 1.0F;
+   inline constexpr float emphasizedBorderWidth = 3.0F;
+@@ -25,8 +25,16 @@ namespace Style {
+   inline constexpr float spaceMd = 12.0F;
+   inline constexpr float spaceLg = 16.0F;
+ 
+-  inline constexpr float cardPadding = 14.0F;
+-  inline constexpr float panelPadding = 14.0F;
++  inline constexpr float cardPadding = 16.0F;
++  inline constexpr float panelPadding = 16.0F;
++
++  // Semantic component grammar shared by shell surfaces. Keep renderers on
++  // these roles instead of choosing unrelated primitive radii and dimensions.
++  inline constexpr float controlRadius = radiusMd;
++  inline constexpr float cardRadius = radiusLg;
++  inline constexpr float floatingSurfaceRadius = radiusXl;
++  inline constexpr float componentGap = spaceSm;
++  inline constexpr float componentPadding = spaceMd;
+ 
+   // Default inner inset for bar widget capsules (logical px, before bar content scale).
+   inline constexpr float barCapsulePadding = 6.0F;
+@@ -39,8 +47,10 @@ namespace Style {
+   inline constexpr float fontSizeHeader = 20.0F;
+ 
+   inline constexpr float controlHeightSm = 32.0F;
+-  inline constexpr float controlHeight = 38.0F;
++  inline constexpr float controlHeight = 40.0F;
+   inline constexpr float controlHeightLg = 44.0F;
++  inline constexpr float buttonHeight = controlHeight;
++  inline constexpr float iconButtonSize = controlHeight;
+   inline constexpr float scrollWheelStep = 56.0F;
+   // Pointer distance in logical px before an armed drag becomes active.
+   inline constexpr float dragStartThreshold = 6.0F;
+diff --git a/tests/button_layout_test.cpp b/tests/button_layout_test.cpp
+index 11b6984c3..6d27f94bb 100644
+--- a/tests/button_layout_test.cpp
++++ b/tests/button_layout_test.cpp
+@@ -2,6 +2,7 @@
+ #include "render/core/texture_manager.h"
+ #include "ui/controls/button.h"
+ #include "ui/controls/glyph.h"
++#include "ui/style.h"
+ 
+ #include <cmath>
+ #include <cstdlib>
+@@ -58,7 +59,7 @@ int main() {
+   button.setGlyphSize(21.0F);
+   button.setContentAlign(ButtonContentAlign::Center);
+   button.setPadding(4.0F);
+-  button.setSize(32.0F, 32.0F);
++  button.setSize(Style::buttonHeight, Style::buttonHeight);
+   button.layout(renderer);
+ 
+   const Glyph* glyph = button.glyph();
+@@ -80,10 +81,11 @@ int main() {
+     return 1;
+   }
+ 
+-  if (!near(glyph->x(), 5.5F) || !near(glyph->y(), 5.5F)) {
++  const float expectedGlyphOffset = (Style::buttonHeight - 21.0F) * 0.5F;
++  if (!near(glyph->x(), expectedGlyphOffset) || !near(glyph->y(), expectedGlyphOffset)) {
+     std::println(
+-        stderr, "button_layout_test: expected a 21px glyph in a 32px button at (5.5, 5.5), got ({}, {})", glyph->x(),
+-        glyph->y()
++        stderr, "button_layout_test: expected a centered 21px glyph in a {}px button at ({}, {}), got ({}, {})",
++        Style::buttonHeight, expectedGlyphOffset, expectedGlyphOffset, glyph->x(), glyph->y()
+     );
+     return 1;
+   }
+diff --git a/src/shell/dock/dock_geometry.cpp b/src/shell/dock/dock_geometry.cpp
+--- a/src/shell/dock/dock_geometry.cpp
++++ b/src/shell/dock/dock_geometry.cpp
+@@ -1,11 +1,12 @@
+ #include "shell/dock/dock_geometry.h"
+ 
+ #include "shell/surface/shadow.h"
++#include "ui/style.h"
+ #include "wayland/layer_surface.h"
+ 
+ #include <algorithm>
+ #include <cmath>
+ 
+ namespace shell::dock {
+   namespace {
+ 
+-    constexpr std::int32_t kCellPad = 6;
++    constexpr std::int32_t kCellPad = static_cast<std::int32_t>(Style::spaceSm);

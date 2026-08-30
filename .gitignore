@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv-qa/
+.omc/
+.agents/
+.claude/
+.omx/
+*.bak
+*.tmp
+out/qa/
+out/native/noctalia-src/
+out/native/noctalia-root/
