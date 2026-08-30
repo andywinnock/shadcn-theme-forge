@@ -5,6 +5,20 @@ tweakcn/shadcn themes. It generates a self-contained component gallery for UI
 asset work plus Noctalia palettes and native templates for GTK 3, GTK 4, Kitty,
 Foot, Alacritty, WezTerm, and Waybar.
 
+> [!WARNING]
+> This is an experimental Linux desktop integration. Start with repository-local
+> generation and a dry-run plan. Live installation changes user configuration;
+> use the documented transactional apply, verify, and rollback commands.
+
+## Project status
+
+The native integration currently targets Noctalia v5 on Niri, GTK 3/4 and
+libadwaita applications, Qt/Kvantum applications, and common terminal
+emulators. It is a community project, not an official shadcn, tweakcn,
+Noctalia, KDE, GNOME, or Kitty project. See `DESIGN.md` for the component
+contract, `mapping.md` for semantic token decisions, and `CONTRIBUTING.md` for
+development and bug-reporting guidance.
+
 ## Start the gallery
 
 ```bash
@@ -209,3 +223,8 @@ offline; local font fallbacks are used instead.
 By default, `forge.py` writes palettes to
 `~/.config/noctalia/palettes/`. Pass `--noctalia-dir out/palettes-test` to keep
 development output inside the repository.
+
+## License
+
+MIT. See `LICENSE`. Upstream projects and any derived theme assets retain their
+own names, licenses, and attribution requirements.
