@@ -1,0 +1,40 @@
+# shadcn-theme-forge user templates — install by copying these sections into
+# ~/.config/noctalia/config.toml (paths must be absolute for user templates):
+#
+#   [theme.templates.user.shadcn_gtk3]
+#   input_path  = "~/shadcn-theme-forge/out/templates/gtk3.css"
+#   output_path = "$XDG_CONFIG_HOME/gtk-3.0/noctalia.css"
+#
+# (same shape for shadcn_gtk4, shadcn_kitty, shadcn_foot, shadcn_alacritty,
+#  shadcn_wezterm, shadcn_waybar — adjust input/output paths accordingly)
+#
+# Then: noctalia theme --list-templates  (confirms pickup)
+# Live apply: noctalia msg templates-apply
+
+[templates.shadcn_gtk3]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/gtk3.css"
+output_path = "$XDG_CONFIG_HOME/gtk-3.0/noctalia.css"
+
+[templates.shadcn_gtk4]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/gtk4.css"
+output_path = "$XDG_CONFIG_HOME/gtk-4.0/noctalia.css"
+
+[templates.shadcn_kitty]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/kitty.conf"
+output_path = "$XDG_CONFIG_HOME/kitty/themes/shadcn.conf"
+
+[templates.shadcn_foot]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/foot.ini"
+output_path = "$XDG_CONFIG_HOME/foot/noctalia.ini"
+
+[templates.shadcn_alacritty]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/alacritty.toml"
+output_path = "$XDG_CONFIG_HOME/alacritty/noctalia.toml"
+
+[templates.shadcn_wezterm]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/wezterm.lua"
+output_path = "$XDG_CONFIG_HOME/wezterm/noctalia.lua"
+
+[templates.shadcn_waybar]
+input_path  = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/waybar.css"
+output_path = "$XDG_CONFIG_HOME/waybar/noctalia.css"

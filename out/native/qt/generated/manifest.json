@@ -1,0 +1,17 @@
+{
+  "themes": {
+    "dark": {
+      "base": "KvMojave",
+      "base_config": "/usr/share/Kvantum/KvMojave/KvMojave.kvconfig",
+      "base_svg": "/usr/share/Kvantum/KvMojave/KvMojave.svg",
+      "name": "ShadcnGraphiteDark"
+    },
+    "light": {
+      "base": "KvMojaveLight",
+      "base_config": "/usr/share/Kvantum/KvMojaveLight/KvMojaveLight.kvconfig",
+      "base_svg": "/usr/share/Kvantum/KvMojaveLight/KvMojaveLight.svg",
+      "name": "ShadcnGraphiteLight"
+    }
+  },
+  "tokens": "/home/andywinnock/Developer/shadcn-theme-forge/out/preview/graphite.json"
+}

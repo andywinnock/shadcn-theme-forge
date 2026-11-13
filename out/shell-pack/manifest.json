@@ -1,0 +1,273 @@
+{
+  "adapter_count": 7,
+  "adapter_outputs": {
+    "shadcn_alacritty": "$XDG_CONFIG_HOME/alacritty/noctalia.toml",
+    "shadcn_foot": "$XDG_CONFIG_HOME/foot/noctalia.ini",
+    "shadcn_gtk3": "$XDG_CONFIG_HOME/gtk-3.0/noctalia.css",
+    "shadcn_gtk4": "$XDG_CONFIG_HOME/gtk-4.0/noctalia.css",
+    "shadcn_kitty": "$XDG_CONFIG_HOME/kitty/themes/shadcn.conf",
+    "shadcn_waybar": "$XDG_CONFIG_HOME/waybar/noctalia.css",
+    "shadcn_wezterm": "$XDG_CONFIG_HOME/wezterm/noctalia.lua"
+  },
+  "default_palette": "graphite",
+  "files": [
+    {
+      "path": "noctalia/90-shadcn-theme-forge.toml",
+      "sha256": "275d40a1a50a7aabfa34d3577fbea134e13b2ad7e59f483910bdca09c77ddcdb",
+      "size": 1431
+    },
+    {
+      "path": "noctalia/palettes/amber-minimal.json",
+      "sha256": "e4ab4de6000f2e78c3d511c999914ea7cfccef219542abca3eb95340c08e364d",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/bold-tech.json",
+      "sha256": "2f89f62a35d447765b80c36ae7268b2fcb57874fbfd75e6200ed44ca1f4e18ff",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/bubblegum.json",
+      "sha256": "b587090fec757751832a3e6e30a7be03898257539de3f3b1a68aed8a96151a2c",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/caffeine.json",
+      "sha256": "72590d4a0f15408222947f2f6e4f7237d4b16fb3bbd9b1e3b63360f17c5f81b3",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/candyland.json",
+      "sha256": "a58c3109472bab529aff185600126058485b36482a8f7962602a9dbb78f420d6",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/catppuccin.json",
+      "sha256": "57f452169abba1ff50386a461a3a3c6af2be5512ea38d7f256b10a1e1e581eea",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/claude.json",
+      "sha256": "27d7b43c14b2604eb2ada9abda5b1c9593fc8e96eddd009ce18d930b8827c830",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/claymorphism.json",
+      "sha256": "ab9cf93e973a8c36ee74d940d0596aa58857fd9b932810351e0449614bf0f3c7",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/clean-slate.json",
+      "sha256": "326844a8b381c3e8124b896cb1f3d336017046710fe50b134d6824ec89298cfc",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/cosmic-night.json",
+      "sha256": "76117d96623f14d53cf368d6c99f3dbfca1edeb2ae8f3e6f716318652ad5c7b5",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/cyberpunk.json",
+      "sha256": "ed2d8d53c91cdcc9cd6a3ee48decf5fdbcb661b16e106e92a78bc7d3394b052a",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/doom-64.json",
+      "sha256": "b8fc772f78481c4aefe8683a691075ab634dbcfc114e9a7fbc8fc5905c33d607",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/elegant-luxury.json",
+      "sha256": "18bc1ba51ffe970b5c584b7f2836b211338cf72d7e98ef895f50b7bcea8bc46d",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/graphite.json",
+      "sha256": "b37d701809aee0e982164610dbdc7ddd1570b01911097c76ce3cda0d2aa5217c",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/kodama-grove.json",
+      "sha256": "c2344f0539c73e9bc1f4f88297d24468acf22bfb2f07f0994116889f1e70a55e",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/midnight-bloom.json",
+      "sha256": "b5ddfc4430f9e34b9da424b49359a63e622f470ce0ed81d5f99f08f4b152fce9",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/mocha-mousse.json",
+      "sha256": "043f33467d52664e0dbbef8ead7852f08663ac6d15fd490fe56c3e7d1a149782",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/modern-minimal.json",
+      "sha256": "fa2b6f88770dc31db1c8c388880bedebe063b790fae6c60d83ff25cd4aebe6f1",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/mono.json",
+      "sha256": "303ac05330eecde6dec0abcb78a7e21905e9c54a79580f9b3ea63c8fb3683aeb",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/nature.json",
+      "sha256": "a53b46775459cfdae7a96f3c924d1a79da0aa02445ed6e309870a74130d36fab",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/neo-brutalism.json",
+      "sha256": "83debbfd31ea9ec5aacb7c3edcab3bfcab9cc6b42034f753f5fd0a4bb7df8993",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/northern-lights.json",
+      "sha256": "dc68b64d54bc74afa2f7534b00264bde10e63a014c9dff717ba167a02930e348",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/ocean-breeze.json",
+      "sha256": "28d683ae86a7e04cf8676e405092d0d31c2cc7b1c9d59d66dace96f05ed10178",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/pastel-dreams.json",
+      "sha256": "fdae4638254e28ce1ab2a6ecd23f5c4341a4ba92ddd8abd1d9045e2b94d22ff5",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/perpetuity.json",
+      "sha256": "173966e5a120f1cc27721c148673938eed7a014d95387b26283c1e8e5f514e68",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/quantum-rose.json",
+      "sha256": "bfc5042ce314ce28b237f35aea7b164da93d8bd50f11c1f5650bd0f8eb8634d1",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/retro-arcade.json",
+      "sha256": "47c194eec484e420e85985eb4d43ca5f61c4ed13960de61556c0ad994c945331",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/solar-dusk.json",
+      "sha256": "87c396de4cfb6199af129599a4563c975dc7a3bbdc909d509bc80cf9bb4a4b72",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/starry-night.json",
+      "sha256": "30015cb073b91893a980df804970b34feef8864d8f0681e66a1f714bfe647cdd",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/sunset-horizon.json",
+      "sha256": "b2bc812d764cc78ba1036b10b7b21f4611ab0bcab452d7b0afdf62d5331ded75",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/supabase.json",
+      "sha256": "1ef289bd29921241e305c12d7c41af211f67a67af2558ee8c95dab9a9a8b9cde",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/t3-chat.json",
+      "sha256": "39f326d70f7faea9d3d9d2d2455c67069774c588393bf679184968026d73269a",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/tangerine.json",
+      "sha256": "ce6e5659b427f7fef12e77430eb845d9158ce4c32fe2a1437ea5323ed1a46f17",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/twitter.json",
+      "sha256": "4255e323b18c1ed90ec5a35544eb1eeba48a9abb5ec9fa4a72a698f6efa98b48",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/vercel.json",
+      "sha256": "5856a03d2078f0c26d19aeae1ccfaa76eea9f31831925f7210ad97fb49375728",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/palettes/vintage-paper.json",
+      "sha256": "3f9bc28711db6ea7695e672d3e54645473cf21e45c38359393c96b325a7f7c25",
+      "size": 2330
+    },
+    {
+      "path": "noctalia/templates/shadcn/alacritty.toml",
+      "sha256": "198ef0e8a49dd1bfb6aa000ea4da40ef2c422ce32ab319fc64aa7b168c084a5b",
+      "size": 1414
+    },
+    {
+      "path": "noctalia/templates/shadcn/foot.ini",
+      "sha256": "3b0f0774888f8926c92e8868582f759cbe68d924117fcbf3155022597c37d0c9",
+      "size": 1409
+    },
+    {
+      "path": "noctalia/templates/shadcn/gtk3.css",
+      "sha256": "6e9b9bbe061195220312d227142ab1edf6b3aa70e6e59c4daea3c8dfffe525f4",
+      "size": 6010
+    },
+    {
+      "path": "noctalia/templates/shadcn/gtk4.css",
+      "sha256": "bbc88c7a9f253f3db05af005face72bdf070016ac4faac1c85064a159df77562",
+      "size": 10251
+    },
+    {
+      "path": "noctalia/templates/shadcn/kitty.conf",
+      "sha256": "b81606781c4bced24827a67dc22fe59ebcc5331000f53611a28f565ccaf5f567",
+      "size": 1424
+    },
+    {
+      "path": "noctalia/templates/shadcn/waybar.css",
+      "sha256": "221bcd4879a9aa543562741f712b4aad4201476747d92499177aec45e97ea74e",
+      "size": 1265
+    },
+    {
+      "path": "noctalia/templates/shadcn/wezterm.lua",
+      "sha256": "9697e6270fb0fa5c551b1c1ea9352fb3113732306710463c0c26f98830bb59f8",
+      "size": 1426
+    },
+    {
+      "path": "rendered/graphite/alacritty.toml",
+      "sha256": "be0a6546b770dd4a2ecd412cb908219edb356f73623541dbbb8489b96fc608ef",
+      "size": 575
+    },
+    {
+      "path": "rendered/graphite/foot.ini",
+      "sha256": "4ecae6fc8ca48e3dfd22e7934e62ee9f51acb9069304b70091dafa38e2bda1e0",
+      "size": 570
+    },
+    {
+      "path": "rendered/graphite/gtk3.css",
+      "sha256": "9d73457c5a758fd4775e24c3da99b41c85bfb4734770a4abb5c43f03f208e4ae",
+      "size": 4964
+    },
+    {
+      "path": "rendered/graphite/gtk4.css",
+      "sha256": "5c8ba5f17309b0f31443eb9f0087f69b4450e04cbfc50316418bfa1d7ec51251",
+      "size": 8351
+    },
+    {
+      "path": "rendered/graphite/kitty.conf",
+      "sha256": "6b2b16e548596048d5c66d3af321454ca62d0aacd1d783e87489db215e8947b6",
+      "size": 527
+    },
+    {
+      "path": "rendered/graphite/waybar.css",
+      "sha256": "5b477998778a7494437a6902fa683b56d811f94adc7003b04340f6048676ffca",
+      "size": 774
+    },
+    {
+      "path": "rendered/graphite/wezterm.lua",
+      "sha256": "a79b7141b1bacab433398b27fd40e8bb9c4d792717e215aa2566a03f27837ef4",
+      "size": 562
+    }
+  ],
+  "format": 1,
+  "owner": "shadcn-theme-forge",
+  "palette_count": 36
+}

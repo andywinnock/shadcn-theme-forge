@@ -208,6 +208,47 @@ button {
   color: @window_fg_color;
 }
 
+/* Toolbars must remain usable in split-screen and laptop-width windows. Keep
+ * the 40px desktop control rhythm for forms, but use compact icon geometry in
+ * header bars so Nautilus can preserve its path and primary actions. */
+headerbar button {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 2px 6px;
+}
+
+headerbar button.image-button,
+headerbar button.circular {
+  padding: 2px;
+}
+
+/* Window chrome should read as glyphs, not another toolbar button group. Keep
+ * a compact hit target and reveal a surface only during pointer interaction. */
+headerbar windowcontrols button {
+  min-width: 28px;
+  min-height: 28px;
+  padding: 2px;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+headerbar windowcontrols button:hover {
+  background-color: @shadcn_control_hover;
+  border-color: transparent;
+}
+
+headerbar windowcontrols button:active {
+  background-color: @shadcn_selection;
+  color: @shadcn_selection_fg;
+}
+
+headerbar entry,
+headerbar combobox > box {
+  min-height: 32px;
+  padding: 2px 8px;
+}
+
 button:hover,
 row:hover {
   background-color: @shadcn_control_hover;
@@ -326,6 +367,77 @@ GTK4_TEMPLATE = GTK3_TEMPLATE.replace("GTK3", "GTK4") + """\
   --success-fg-color: {{ colors.on_secondary.default.hex }};
   --shade-color: alpha({{ colors.scrim.default.hex }}, 0.36);
 }
+
+/* Nautilus lays out its sidebar and content as sibling panes. Give both
+ * headerbars the same 60 px outer height so their lower dividers share one
+ * structural baseline. GTK includes the padding in this minimum allocation. */
+.sidebar-pane headerbar,
+.content-pane headerbar {
+  min-height: 60px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* The sidebar toolbar positions its headerbar 3 px above the content toolbar.
+ * Shift that headerbar within its existing allocation so both panes use the
+ * same native border rendering on the same baseline. */
+.sidebar-pane headerbar {
+  margin-top: 3px;
+  margin-bottom: -3px;
+}
+
+/* Keep every navigation row at its native height. Continue the content-header
+ * baseline through the standard gap before the second row. */
+.navigation-sidebar > row:nth-child(2) {
+  margin-top: 3px;
+  border-top: 1px solid @shadcn_border;
+}
+
+/* Sidebar selection is a flat navigation state, not a raised primary button. */
+.navigation-sidebar > row:selected {
+  background-color: @shadcn_selection;
+  color: @shadcn_selection_fg;
+  border: none;
+  box-shadow: none;
+}
+
+/* Trash exposes an AdwBanner with no title and one trailing action. Remove the
+ * oversized panel treatment so the action remains compact and the surrounding
+ * space reads as part of the file view. */
+.content-pane banner > revealer > widget {
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: @view_bg_color;
+  border: none;
+  box-shadow: none;
+}
+
+/* A column header is one table control, not a row of floating cards. Preserve
+ * column affordances with subtle internal separators and rounded outer ends. */
+.nautilus-list-view columnview > header > button {
+  margin: 0;
+  border-radius: 0;
+  border-left-width: 0;
+  border-right-width: 1px;
+  background-color: @shadcn_control;
+  box-shadow: none;
+}
+
+.nautilus-list-view columnview > header > button:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.nautilus-list-view columnview > header > button:last-child {
+  border-right-width: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Nautilus adds a list-view gutter by default. Let the table and its unified
+ * column header use the full content width; cell padding preserves row rhythm. */
+.nautilus-list-view columnview {
+  padding-left: 0;
+  padding-right: 0;
+}
 """
 
 # shadcn-flavored kitty config: palette from our flattened terminal tokens
@@ -341,7 +453,7 @@ selection_background {{ colors.terminal_selection_bg.default.hex }}
 active_border_color {{ colors.primary.default.hex }}
 inactive_border_color {{ colors.surface_variant.default.hex }}
 
-color0  {{ colors.terminal_normal_black.default.hex }}
+color0  {{ colors.on_surface_variant.default.hex }}
 color1  {{ colors.terminal_normal_red.default.hex }}
 color2  {{ colors.terminal_normal_green.default.hex }}
 color3  {{ colors.terminal_normal_yellow.default.hex }}
@@ -349,7 +461,7 @@ color4  {{ colors.terminal_normal_blue.default.hex }}
 color5  {{ colors.terminal_normal_magenta.default.hex }}
 color6  {{ colors.terminal_normal_cyan.default.hex }}
 color7  {{ colors.terminal_normal_white.default.hex }}
-color8  {{ colors.terminal_bright_black.default.hex }}
+color8  {{ colors.on_surface_variant.default.hex }}
 color9  {{ colors.terminal_bright_red.default.hex }}
 color10 {{ colors.terminal_bright_green.default.hex }}
 color11 {{ colors.terminal_bright_yellow.default.hex }}
@@ -378,7 +490,7 @@ foreground = "{{ colors.terminal_selection_fg.default.hex }}"
 background = "{{ colors.terminal_selection_bg.default.hex }}"
 
 [colors.normal]
-black = "{{ colors.terminal_normal_black.default.hex }}"
+black = "{{ colors.on_surface_variant.default.hex }}"
 red = "{{ colors.terminal_normal_red.default.hex }}"
 green = "{{ colors.terminal_normal_green.default.hex }}"
 yellow = "{{ colors.terminal_normal_yellow.default.hex }}"
@@ -388,7 +500,7 @@ cyan = "{{ colors.terminal_normal_cyan.default.hex }}"
 white = "{{ colors.terminal_normal_white.default.hex }}"
 
 [colors.bright]
-black = "{{ colors.terminal_bright_black.default.hex }}"
+black = "{{ colors.on_surface_variant.default.hex }}"
 red = "{{ colors.terminal_bright_red.default.hex }}"
 green = "{{ colors.terminal_bright_green.default.hex }}"
 yellow = "{{ colors.terminal_bright_yellow.default.hex }}"
@@ -413,7 +525,7 @@ text = "{{ colors.terminal_selection_fg.default.hex }}"
 background = "{{ colors.terminal_selection_bg.default.hex }}"
 
 [colors.normal]
-black = "{{ colors.terminal_normal_black.default.hex }}"
+black = "{{ colors.on_surface_variant.default.hex }}"
 red = "{{ colors.terminal_normal_red.default.hex }}"
 green = "{{ colors.terminal_normal_green.default.hex }}"
 yellow = "{{ colors.terminal_normal_yellow.default.hex }}"
@@ -423,7 +535,7 @@ cyan = "{{ colors.terminal_normal_cyan.default.hex }}"
 white = "{{ colors.terminal_normal_white.default.hex }}"
 
 [colors.bright]
-black = "{{ colors.terminal_bright_black.default.hex }}"
+black = "{{ colors.on_surface_variant.default.hex }}"
 red = "{{ colors.terminal_bright_red.default.hex }}"
 green = "{{ colors.terminal_bright_green.default.hex }}"
 yellow = "{{ colors.terminal_bright_yellow.default.hex }}"
@@ -447,7 +559,7 @@ ret.selection_background = "{{ colors.terminal_selection_bg.default.hex }}"
 ret.selection_foreground = "{{ colors.terminal_selection_fg.default.hex }}"
 
 ret.ansi = {
-  "{{ colors.terminal_normal_black.default.hex }}",
+  "{{ colors.on_surface_variant.default.hex }}",
   "{{ colors.terminal_normal_red.default.hex }}",
   "{{ colors.terminal_normal_green.default.hex }}",
   "{{ colors.terminal_normal_yellow.default.hex }}",
@@ -458,7 +570,7 @@ ret.ansi = {
 }
 
 ret.brights = {
-  "{{ colors.terminal_bright_black.default.hex }}",
+  "{{ colors.on_surface_variant.default.hex }}",
   "{{ colors.terminal_bright_red.default.hex }}",
   "{{ colors.terminal_bright_green.default.hex }}",
   "{{ colors.terminal_bright_yellow.default.hex }}",

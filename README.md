@@ -187,6 +187,23 @@ marker. Override the destination for sandbox tests with an absolute
 `XDG_CONFIG_HOME`, then `~/.config`. Render atomically replaces the generated
 pack, while verify rejects stale or unmanifested pack files.
 
+## Known limitations
+
+### Codex TUI composer contrast in light mode
+
+Kitty's generated light palette uses a dark foreground on a light background,
+including readable ANSI black and bright-black slots. However, an already
+running Codex TUI—or a Codex session toggled to light mode—may continue to draw
+its composer with a dark surface while inheriting the terminal's dark
+foreground. The result is low-contrast typed text inside the composer even
+though ordinary terminal output remains readable.
+
+Reloading Kitty does not resolve this application-owned state. Explicitly
+setting `tui.theme = "github"` in `~/.codex/config.toml` was also insufficient
+for the affected toggled session. This is currently documented rather than
+worked around in the terminal adapters, because forcing a light foreground
+would make normal shell text unreadable on the generated light background.
+
 ## How it fits together
 
 ```text

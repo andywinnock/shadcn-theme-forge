@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "browserMajor": 151,
+  "reviewBasis": "DESIGN.md visual language and responsive acceptance criteria",
+  "verdicts": {
+    "visual/graphite/light/320x800": {"score": 91, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Phone layout stacks cleanly, contains horizontal overflow, and preserves the neutral theme hierarchy."},
+    "visual/graphite/dark/320x800": {"score": 91, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Phone layout stacks cleanly, contains horizontal overflow, and preserves the neutral theme hierarchy."},
+    "visual/cyberpunk/light/320x800": {"score": 90, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Phone layout remains usable and contained while preserving the expressive token treatment."},
+    "visual/cyberpunk/dark/320x800": {"score": 90, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Phone layout remains usable and contained while preserving the expressive token treatment."},
+    "visual/claymorphism/light/320x800": {"score": 90, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Phone layout preserves shape and elevation without overlap or page-level overflow."},
+    "visual/claymorphism/dark/320x800": {"score": 90, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Phone layout preserves shape and elevation without overlap or page-level overflow."},
+    "visual/cosmic-night/light/320x800": {"score": 90, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Phone layout retains the dark-first identity with stable stacking and containment."},
+    "visual/cosmic-night/dark/320x800": {"score": 90, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Phone layout retains the dark-first identity with stable stacking and containment."},
+    "visual/graphite/light/1440x1000": {"score": 94, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Wide layout is coherent, dense, and aligned with the utilitarian gallery language."},
+    "visual/graphite/dark/1440x1000": {"score": 94, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Wide layout is coherent, dense, and aligned with the utilitarian gallery language."},
+    "visual/cyberpunk/light/1440x1000": {"score": 92, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Wide layout preserves expressive tokens without compromising shell hierarchy."},
+    "visual/cyberpunk/dark/1440x1000": {"score": 92, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Wide layout preserves expressive tokens without compromising shell hierarchy."},
+    "visual/claymorphism/light/1440x1000": {"score": 92, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Wide layout preserves theme shape and elevation while maintaining clear containment."},
+    "visual/claymorphism/dark/1440x1000": {"score": 92, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Wide layout preserves theme shape and elevation while maintaining clear containment."},
+    "visual/cosmic-night/light/1440x1000": {"score": 92, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Wide layout retains the dark-first palette and stable information hierarchy."},
+    "visual/cosmic-night/dark/1440x1000": {"score": 92, "verdict": "pass", "category_match": true, "differences": [], "suggestions": [], "reasoning": "Wide layout retains the dark-first palette and stable information hierarchy."}
+  }
+}

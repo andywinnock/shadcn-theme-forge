@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "selected_driver": "stdlib-cdp",
+  "implementations": ["stdlib-cdp"],
+  "browser": {
+    "executable": "/usr/bin/chromium",
+    "expected_major": 151,
+    "validated_host_version": "Chromium 151.0.7922.173 Arch Linux"
+  },
+  "transport": "local remote-debugging-pipe",
+  "feasibility": {
+    "bounded_attempts": 1,
+    "hard_timeout_seconds": 60,
+    "primitives": {
+      "page_navigation": {"status": "pass", "evidence": "Page.navigate + Page.loadEventFired"},
+      "network_events": {"status": "pass", "evidence": "Network.requestWillBeSent captured from document start"},
+      "runtime_and_log": {"status": "pass", "evidence": "Runtime.exceptionThrown and Log.entryAdded enabled before navigation"},
+      "real_keyboard_input": {"status": "pass", "evidence": "Input.dispatchKeyEvent moves focus via Tab"},
+      "emulation": {"status": "pass", "evidence": "viewport, media features, and zoom applied through Emulation"},
+      "accessibility_tree": {"status": "pass", "evidence": "Accessibility.getFullAXTree returns named roles"},
+      "runtime_evaluation": {"status": "pass", "evidence": "Runtime.evaluate returns DOM state"},
+      "screenshot": {"status": "pass", "evidence": "Page.captureScreenshot returns a valid PNG"}
+    }
+  },
+  "fallback": null
+}

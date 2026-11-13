@@ -1,0 +1,211 @@
+/*
+ * shadcn-theme-forge GTK3 template — tweakcn/shadcn vocabulary, native engine.
+ * Generated roles come straight from the community palette's exact hexes.
+ */
+
+@define-color accent_color {{ colors.primary.default.hex }};
+@define-color accent_bg_color {{ colors.primary.default.hex }};
+@define-color accent_fg_color {{ colors.on_primary.default.hex }};
+
+@define-color destructive_bg_color {{ colors.error.default.hex }};
+@define-color destructive_fg_color {{ colors.on_error.default.hex }};
+@define-color error_bg_color {{ colors.error.default.hex }};
+@define-color error_fg_color {{ colors.on_error.default.hex }};
+
+@define-color window_bg_color {{ colors.background.default.hex }};
+@define-color window_fg_color {{ colors.on_background.default.hex }};
+
+@define-color view_bg_color {{ colors.surface.default.hex }};
+@define-color view_fg_color {{ colors.on_surface.default.hex }};
+
+@define-color headerbar_bg_color {{ colors.surface_container.default.hex }};
+@define-color headerbar_fg_color {{ colors.on_surface.default.hex }};
+@define-color headerbar_backdrop_color @window_bg_color;
+
+@define-color popover_bg_color {{ colors.surface_container_high.default.hex }};
+@define-color popover_fg_color {{ colors.on_surface.default.hex }};
+
+@define-color card_bg_color {{ colors.surface_container.default.hex }};
+@define-color card_fg_color {{ colors.on_surface.default.hex }};
+
+@define-color dialog_bg_color {{ colors.surface.default.hex }};
+@define-color dialog_fg_color {{ colors.on_surface.default.hex }};
+
+@define-color overview_bg_color {{ colors.surface_container.default.hex }};
+@define-color overview_fg_color {{ colors.on_surface.default.hex }};
+
+@define-color sidebar_bg_color {{ colors.surface_container_low.default.hex }};
+@define-color sidebar_fg_color {{ colors.on_surface_variant.default.hex }};
+
+@define-color backdrop_bg_color {{ colors.scrim.default.hex | set_alpha 0.6 }};
+
+@define-color text_color {{ colors.on_surface.default.hex }};
+@define-color insensitive_bg_color {{ colors.surface_variant.default.hex }};
+@define-color insensitive_fg_color {{ colors.on_surface_variant.default.hex }};
+
+@define-color fg_color {{ colors.on_surface.default.hex }};
+@define-color bg_color {{ colors.surface.default.hex }};
+
+/* Shared shadcn component grammar.  These rules intentionally use GTK's
+ * stable widget nodes/classes so GTK3 and GTK4 applications inherit the same
+ * shape, density, borders, and interaction hierarchy as the native shell. */
+@define-color shadcn_border {{ colors.outline_variant.default.hex }};
+@define-color shadcn_focus {{ colors.primary.default.hex }};
+@define-color shadcn_control {{ colors.surface_container.default.hex }};
+@define-color shadcn_control_hover {{ colors.surface_container_high.default.hex }};
+@define-color shadcn_selection {{ colors.primary.default.hex }};
+@define-color shadcn_selection_fg {{ colors.on_primary.default.hex }};
+
+window,
+dialog,
+.background {
+  background-color: @window_bg_color;
+  color: @window_fg_color;
+}
+
+headerbar {
+  min-height: 40px;
+  padding: 4px 8px;
+  background-image: none;
+  background-color: @headerbar_bg_color;
+  border-bottom: 1px solid @shadcn_border;
+  box-shadow: none;
+}
+
+button,
+entry,
+spinbutton,
+combobox > box {
+  min-height: 32px;
+  border: 1px solid @shadcn_border;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+button {
+  padding: 4px 12px;
+  background-image: none;
+  background-color: @shadcn_control;
+  color: @window_fg_color;
+}
+
+/* Toolbars must remain usable in split-screen and laptop-width windows. Keep
+ * the 40px desktop control rhythm for forms, but use compact icon geometry in
+ * header bars so Nautilus can preserve its path and primary actions. */
+headerbar button {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 2px 6px;
+}
+
+headerbar button.image-button,
+headerbar button.circular {
+  padding: 2px;
+}
+
+/* Window chrome should read as glyphs, not another toolbar button group. Keep
+ * a compact hit target and reveal a surface only during pointer interaction. */
+headerbar windowcontrols button {
+  min-width: 28px;
+  min-height: 28px;
+  padding: 2px;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+headerbar windowcontrols button:hover {
+  background-color: @shadcn_control_hover;
+  border-color: transparent;
+}
+
+headerbar windowcontrols button:active {
+  background-color: @shadcn_selection;
+  color: @shadcn_selection_fg;
+}
+
+headerbar entry,
+headerbar combobox > box {
+  min-height: 32px;
+  padding: 2px 8px;
+}
+
+button:hover,
+row:hover {
+  background-color: @shadcn_control_hover;
+}
+
+button:active,
+button:checked,
+row:selected {
+  background-color: @shadcn_selection;
+  color: @shadcn_selection_fg;
+}
+
+button.suggested-action {
+  background-color: @accent_bg_color;
+  color: @accent_fg_color;
+  border-color: @accent_bg_color;
+}
+
+button.destructive-action {
+  background-color: @destructive_bg_color;
+  color: @destructive_fg_color;
+  border-color: @destructive_bg_color;
+}
+
+entry,
+spinbutton,
+combobox > box {
+  padding: 4px 10px;
+  background-color: @view_bg_color;
+  color: @view_fg_color;
+}
+
+button:focus,
+entry:focus,
+spinbutton:focus,
+combobox:focus > box {
+  border-color: @shadcn_focus;
+  box-shadow: 0 0 0 2px alpha(@shadcn_focus, 0.28);
+}
+
+popover > contents,
+menu,
+.menu,
+.card {
+  background-color: @popover_bg_color;
+  color: @popover_fg_color;
+  border: 1px solid @shadcn_border;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px alpha(black, 0.24);
+}
+
+/* GtkPopoverMenu already provides its own menu surface. Keeping the generic
+ * popover surface beneath it creates a second padded box around Nautilus's
+ * hamburger menu, so make only that redundant outer node transparent. */
+popover.menu > contents {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+list,
+listview,
+columnview,
+gridview {
+  background-color: @view_bg_color;
+  color: @view_fg_color;
+}
+
+row {
+  min-height: 36px;
+  border-radius: 8px;
+}
+
+separator {
+  background-color: @shadcn_border;
+  min-width: 1px;
+  min-height: 1px;
+}

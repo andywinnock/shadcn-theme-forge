@@ -1,0 +1,40 @@
+# Managed by shadcn-theme-forge shell_pack.py; safe to replace.
+# No secrets, credentials, absolute home paths, monitor names, or pinned apps.
+
+[theme]
+mode = "dark"
+source = "custom"
+custom_palette = "graphite"
+pure_black_dark = false
+
+[theme.templates]
+enable_builtin_templates = false
+builtin_ids = []
+
+[theme.templates.user.shadcn_gtk3]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/gtk3.css"
+output_path = "$XDG_CONFIG_HOME/gtk-3.0/noctalia.css"
+
+[theme.templates.user.shadcn_gtk4]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/gtk4.css"
+output_path = "$XDG_CONFIG_HOME/gtk-4.0/noctalia.css"
+
+[theme.templates.user.shadcn_kitty]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/kitty.conf"
+output_path = "$XDG_CONFIG_HOME/kitty/themes/shadcn.conf"
+
+[theme.templates.user.shadcn_foot]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/foot.ini"
+output_path = "$XDG_CONFIG_HOME/foot/noctalia.ini"
+
+[theme.templates.user.shadcn_alacritty]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/alacritty.toml"
+output_path = "$XDG_CONFIG_HOME/alacritty/noctalia.toml"
+
+[theme.templates.user.shadcn_wezterm]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/wezterm.lua"
+output_path = "$XDG_CONFIG_HOME/wezterm/noctalia.lua"
+
+[theme.templates.user.shadcn_waybar]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/shadcn/waybar.css"
+output_path = "$XDG_CONFIG_HOME/waybar/noctalia.css"
